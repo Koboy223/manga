@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VER PELÍCULAS - Streaming Profesional</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="estilo/cuadiricula.css">
+    <link rel="stylesheet" href="estilo/carucel.css">
+    <link rel="stylesheet" href="estilo/tanks.css">
+    <link rel="stylesheet" href="estilo/estilos.css">
+    <style>
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen " data-hashtag="#PeliculasStreaming"  ></body>
+
+    <!-- Ventana emergente principal -->
+    <div class="overlay" id="popup">
+        <div class="popup">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img src="img/yo.jpg" alt="Imagen de perfil">
+            <h2>Visita mi Instagram</h2>
+            <a href="https://www.instagram.com/tu_usuario" target="_blank">Ir a Instagram</a>
+            
+            <!-- Contenedor para el checkbox "No volver a mostrar" -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="noShowCheckbox">
+                <label for="noShowCheckbox">No volver a mostrar</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini ventana emergente de "Jajaja sos malo" -->
+    <div class="mini-popup" id="miniPopup">
+        <img src="img/vecteezy-removebg-preview.png" alt="Imagen">
+        <p> sos regey@ seguime</p>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-black p-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <button id="menuToggle" class="mr-4 focus:outline-none transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <h1 class="text-2xl font-bold">VER MANGA</h1>
+            </div>
+            <button id="searchToggle" class="focus:outline-none transition-transform duration-300 hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav id="menu" class="bg-gray-800 p-4 hidden fade-in">
+        <ul class="space-y-2">
+            <li><a href="#" class="block hover:text-gray-300 transition-colors duration-300">Inicio</a></li>
+            <li><a href="#" class="block hover:text-gray-300 transition-colors duration-300">Categorías</a></li>
+            <li><a href="#" class="block hover:text-gray-300 transition-colors duration-300">Mi Lista</a></li>
+            <li><a href="ajustes.html" class="block hover:text-gray-300 transition-colors duration-300">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div id="searchBar" class="bg-gray-800 p-4 hidden fade-in">
+        <input 
+            type="text" 
+            placeholder="Buscar películas..." 
+            id="searchInput"
+            class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+        />
+        <div id="searchResults" class="mt-4 hidden"></div>
+
+    </div>
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides" id="slides-container"></ul>
+        </div>
+        <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+       <!-- Main Content -->
+    <main class="container1 mx-auto p-4">
+        <h2 class="text-xl font-semibold mb-4">Sin Censura</h2>
+        <div id="movieGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Aventuras Increíbles" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Aventuras Increíbles</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">8.9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Misterio en la Ciudad" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Misterio en la Ciudad</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">7.5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Amor en París" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Amor en París</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">8.2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Acción Extrema" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Acción Extrema</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">8.7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Comedia Familiar" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Comedia Familiar</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">7.8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-card rounded-lg overflow-hidden shadow-lg relative">
+                <div class="movie-info p-2 bg-gray-800">
+                    <img src="https://via.placeholder.com/300x200" alt="Documental Natural" class="w-full h-48 sm:h-64 object-cover mb-2">
+                    <div class="flex items-center mb-1"> <!-- Contenedor flex para el autor -->
+                        <img src="https://via.placeholder.com/40x40" alt="Autor" class="author-badge">
+                        <p>Autor</p>
+                    </div>
+                    <h3 class="text-white text-sm font-semibold truncate">Documental Natural</h3>
+                    <div class="flex items-center">
+                        <span class="text-yellow-400 mr-1">★</span>
+                        <span class="text-white text-xs">9.1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="scripts/carucel.js"></script>
+    <script src="search.js"></script>
+    <script src="scripts/tanks.js"></script>
+    <script src="scripts/ajustes.js"></script>
+
+    <script>
+        // Toggle menu visibility
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Toggle search bar visibility
+        document.getElementById('searchToggle').addEventListener('click', function() {
+            const searchBar = document.getElementById('searchBar');
+            searchBar.classList.toggle('hidden');
+            document.getElementById('searchInput').value = ''; // Clear the search input
+            document.getElementById('searchResults').innerHTML = ''; // Clear results
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = ''; // Clear previous results
+            
+            if (query) {
+                const results = pages.filter(page => page.content.toLowerCase().includes(query));
+                
+                results.forEach(page => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'p-2 hover:bg-gray-700 transition-colors duration-300 border-b border-gray-600';
+                    resultItem.innerHTML = `
+                        <a href="${page.url}" class="text-blue-400 font-bold">${page.title}</a>
+                        <p class="text-gray-300">${page.content}</p>
+                    `;
+                    resultsContainer.appendChild(resultItem);
+                });
+
+                // Si no hay resultados, muestra un mensaje
+                if (results.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'p-2 text-gray-400';
+                    noResults.innerText = 'No se encontraron resultados.';
+                    resultsContainer.appendChild(noResults);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+   

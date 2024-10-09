@@ -1,0 +1,9 @@
+:root {
+    --color-accent: blue;
+}
+
+.font-sans { font-family: Arial, sans-serif; }
+.font-serif { font-family: Georgia, serif; }
+.font-mono { font-family: 'Courier New', monospace; }
+
+/* Puedes agregar más estilos según sea necesario */

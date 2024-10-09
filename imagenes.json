@@ -1,0 +1,42 @@
+[
+    {
+        "src": "img/escanor.jpg",
+        "alt": "Escanor",
+        "description": "Descripción de Escanor"
+    },
+    {
+        "src": "img/miku.jpg",
+        "alt": "Miku",
+        "description": "Descripción de Miku"
+    },
+    {
+        "src": "img/goku.jpg",
+        "alt": "Goku",
+        "description": "Descripción de Goku"
+    },
+    {
+        "src": "img/naruto.jpg",
+        "alt": "8k",
+        "description": "Descripción de 8k"
+    },
+    {
+        "src": "img/spy-family.jpg",
+        "alt": "spy-family",
+        "description": "Descripción de Spy Family"
+    },
+    {
+        "src": "img/sowor-art-one-line.jpg",
+        "alt": "Sword Art Online",
+        "description": "Descripción de Sword Art Online"
+    },
+    {
+        "src": "img/re-zero.jpg",
+        "alt": "Re:Zero",
+        "description": "Descripción de Re:Zero"
+    },
+    {
+        "src": "img/asta.jpg",
+        "alt": "Asta",
+        "description": "Descripción de Asta"
+    }
+]

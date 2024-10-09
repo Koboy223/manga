@@ -1,0 +1,17 @@
+[
+    {
+      "title": "El Padrino",
+      "description": "Drama clásico sobre la mafia italiana en América.",
+      "image": "/img1/OIP.png",
+      "page": "drama.html"
+    },
+
+    {
+      "title": "Miaterio",
+      "description": "Drama clásico sobre la mafia italiana en América.",
+      "image": "/images/el-padrino.jpg",
+      "page": "prew.html"
+    }
+
+
+  ]

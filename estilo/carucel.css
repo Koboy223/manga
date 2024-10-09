@@ -1,0 +1,53 @@
+
+.glide {
+    top: 40px;
+    max-width: 900px; /* Limitar el ancho máximo del carrusel */
+    margin: 0 auto; /* Centrar el carrusel */
+    position: relative;
+    overflow: hidden;
+}
+
+.glide__slide img {
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 300px; /* Limitar la altura máxima de las imágenes */
+}
+
+.glide__bullets {
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.glide__bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.glide__bullet--active {
+    background-color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 640px) {
+    .glide__bullet {
+        width: 6px; /* Tamaño más pequeño para móviles */
+        height: 6px;
+    }
+}
+
+@media (max-width:700px) {
+    .glide {
+        max-width: 350px; /* Limitar el ancho máximo del carrusel */
+        margin: 0 auto; /* Centrar el carrusel */
+        position: relative;
+        overflow: hidden;
+    }
+}
+  
